@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>博客编辑</title>
+    <head></head>
+    <body>
+       {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <a href="/blog/list">返回主页>></a><p/>
+    <form action="/blog/form" method="post">
+       {% csrf_token %}
+       <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="保存">
+    </form>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>主页-博客列表</title>
+    <head></head>
+    <body>
+       {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <a href="/blog/form">去写博客>></a><p/>
+       <table cellpadding="0" cellpadding="0" width="100%" border="1" >
+        <tr height="20">
+            <td>编号</td>
+            <td>标题</td>
+            <td>作者</td>
+            <td>发布时间</td>
+            <td>操作</td>
+        </tr>
+        {% for blog in blog_list %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a href="/blog/view?id={{blog.id}}">{{blog.title}}</a></td>
+            <td>{{blog.author}}</td>
+            <td>{{blog.post_date | date:"Y-m-d H:i:s"}}</td>
+            <td><a href="/blog/edit?id={{blog.id}}">修改</a>&nbsp;<a href="/blog/delete?id={{blog.id}}">删除</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">还没有添加博客内容</td></tr>
+        {% endfor %}
+
+    </table>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<<html>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>{{blog.title}}</title>
+    <head></head>
+    <body>
+       {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <a href="/blog/list">返回主页>></a><p/>
+    <h2>{{blog.title}}</h2>
+    <p>作者：{{blog.author}}&nbsp;&nbsp;{{blog.post_date | date:'Y-m-d h:i:s'}}<p>
+    <p>{{blog.content}}</p>
+    </body>
+</html>
